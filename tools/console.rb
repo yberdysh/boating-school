@@ -1,14 +1,17 @@
 require_relative '../config/environment'
 
-madeline = Student.new("Madeline", "Celis")
-vadim = Student.new("Vadim", "Avnilov")
+chris = Student.new("Chris", "Chan")
+zohra = Student.new("Zohra", "Anwar")
+danny = Student.new("Danny", "Krug")
+eben = Student.new("Eben", "Woodward")
+juan = Student.new("Juan", "Castillo")
 
-jane = Instructor.new('Jane')
-prince = Instructor.new('Prince')
+jane = Instructor.new("Jane")
+prince = Instructor.new("Prince")
 
-test1 = BoatingTest.new(madeline, "First Boating Test", "fail", jane)
-test2 = BoatingTest.new(vadim, "First Boating Test", "pass", jane)
-test3 = BoatingTest.new(madeline, "Second Boating Test", "pass", prince)
-test4 = BoatingTest.new(vadim, "Fifth Boating Test", "fail", prince)
+test1 = BoatingTest.new(chris, "Speed", "fail", jane)
+test2 = BoatingTest.new(zohra, "Turning", "pass", jane)
+test3 = BoatingTest.new(danny, "Drunk Boating", "fail", prince)
+test4 = BoatingTest.new(juan, "Parking", "pass", prince)
 
 binding.pry

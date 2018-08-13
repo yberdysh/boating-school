@@ -1,6 +1,5 @@
 class Instructor
-	attr_accessor :name
-
+	attr_reader :name
 	@@all = []
 
 	def initialize(name)
@@ -13,24 +12,24 @@ class Instructor
 	end
 
 	def fail_student(student_name, test_name)
-		test = find_test(student_name, test_name)
-		test.status = "fail"
+		boating_test = find_test(student_name, test_name)
+		boating_test.status = "FAIL"
 	end
 
 	def pass_student(student_name, test_name)
-		test = find_test(student_name, test_name)
-		test.status = "pass"
+		boating_test = find_test(student_name, test_name)
+		boating_test.status = "PASS"
+		
 	end
 
 	def boating_tests
-		BoatingTest.all.select{|test| test.instructor_object == self}
+		BoatingTest.all.select{|test| test.instructor == self}
 	end
 
 	private
 
 	def find_test(student_name, test_name)
-		BoatingTest.all.find{|test| test.student_object.full_name == student_name && test.test_name == test_name && test.instructor_object == self}
+		BoatingTest.all.find{|test| test.test_name == test_name && test.student.full_name == student_name && test.instructor == self}
 	end
 
 end
-
