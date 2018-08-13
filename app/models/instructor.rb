@@ -1,5 +1,5 @@
 class Instructor
-	attr_reader :name
+	attr_accessor :name
 
 	@@all = []
 
@@ -13,20 +13,24 @@ class Instructor
 	end
 
 	def fail_student(student_name, test_name)
-		the_test = BoatingTest.all.find{|test| test.instructor == self && test.student.full_name == student_name && test.name == test_name}
-		the_test.status = "fail"
-		
+		test = find_test(student_name, test_name)
+		test.status = "fail"
 	end
 
 	def pass_student(student_name, test_name)
-		the_test = BoatingTest.all.find{|test| test.instructor == self && test.student.full_name == student_name && test.name == test_name}
-		the_test.status = "pass"
-		
+		test = find_test(student_name, test_name)
+		test.status = "pass"
 	end
 
 	def boating_tests
-		# look through all boating tests, select just instructor's
-		BoatingTest.all.select{|test| test.instructor == self}
+		BoatingTest.all.select{|test| test.instructor_object == self}
 	end
+
+	private
+
+	def find_test(student_name, test_name)
+		BoatingTest.all.find{|test| test.student_object.full_name == student_name && test.test_name == test_name && test.instructor_object == self}
+	end
+
 end
 

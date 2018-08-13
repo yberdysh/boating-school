@@ -1,26 +1,14 @@
 require_relative '../config/environment'
 
-# students
+madeline = Student.new("Madeline", "Celis")
+vadim = Student.new("Vadim", "Avnilov")
 
-def some_method
-	steven = Student.new("Ever", "Greatest")
-	marlon = Student.new("Marlon", "Brando")
-	andre = Student.new("Andre", "Santiago")
-	cat = Student.new("Poseidon", "Costa")
+jane = Instructor.new('Jane')
+prince = Instructor.new('Prince')
 
-	# ?instructors
-	jane = Instructor.new("Jane")
-	prince = Instructor.new("Prince")
-	greg = Instructor.new("Greg")
+test1 = BoatingTest.new(madeline, "First Boating Test", "fail", jane)
+test2 = BoatingTest.new(vadim, "First Boating Test", "pass", jane)
+test3 = BoatingTest.new(madeline, "Second Boating Test", "pass", prince)
+test4 = BoatingTest.new(vadim, "Fifth Boating Test", "fail", prince)
 
-	# boating tests
-	steven.add_boating_test(jane, "Hello World", "pass")
-	andre.add_boating_test(greg, "Some Test", "pass?")
-	cat.add_boating_test(jane, "Meow Lessons", "pass")
-	cat.add_boating_test(jane, "More Meow", "fail")
-
-	binding.pry
-	
-end
-
-some_method
+binding.pry
